@@ -1,1 +1,4 @@
-Element 6 not found in the array
+Sorted array:
+2 3 4 8 10 
+
+
