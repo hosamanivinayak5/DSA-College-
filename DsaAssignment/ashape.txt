@@ -1,0 +1,1 @@
+Area of rectangle: 8.00
