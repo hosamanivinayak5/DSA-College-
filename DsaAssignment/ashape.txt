@@ -1,1 +1,1 @@
-Area of rectangle: 8.00
+Area of triangle: 10.00
