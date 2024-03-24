@@ -8,7 +8,7 @@ int main() {
     int rowsA, colsA, rowsB, colsB;
 
     // Open input file for matrix A
-    inputFileA = fopen("matrixA.txt", "r");
+    inputFileA = fopen("matrix.txt", "r");
     if (inputFileA == NULL) {
         printf("Error opening input file for matrix A!\n");
         return 1;

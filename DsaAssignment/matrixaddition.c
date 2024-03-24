@@ -8,11 +8,11 @@ int main() {
     int rowsA, colsA, rowsB, colsB;
 
     // Open input file for matrix A
-    inputFileA = fopen("matrixA.txt", "r");
-    if (inputFileA == NULL) {
-        printf("Error opening input file for matrix A!\n");
-        return 1;
-    }
+    inputFileA = fopen("matrix.txt", "r");
+    // if (inputFileA == NULL) {
+    //     printf("Error opening input file for matrix A!\n");
+    //     return 1;
+    // }
 
     // Read dimensions of matrix A from file
     if (fscanf(inputFileA, "%d %d", &rowsA, &colsA) != 2) {
@@ -36,10 +36,10 @@ int main() {
 
     // Open input file for matrix B
     inputFileB = fopen("matrixB.txt", "r");
-    if (inputFileB == NULL) {
-        printf("Error opening input file for matrix B!\n");
-        return 1;
-    }
+    // if (inputFileB == NULL) {
+    //     printf("Error opening input file for matrix B!\n");
+    //     return 1;
+    // }
 
     // Read dimensions of matrix B from file
     if (fscanf(inputFileB, "%d %d", &rowsB, &colsB) != 2) {

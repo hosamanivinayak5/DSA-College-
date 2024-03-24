@@ -64,7 +64,7 @@ int main() {
     fprintf(outputFile, "\n");
 
     fclose(outputFile);
-    printf("Sorted array has been written to 'output.txt'\n");
+   
 
     return 0;
 }

@@ -4,13 +4,24 @@ int main() {
     char ch;
     int a, b, c;
     FILE *input;
+    FILE *output;
 
-    input = fopen("simplecal.txt", "r+");
+    // Open the input file "simplecal.txt" for reading
+    input = fopen("simplecal.txt", "r");
     if (input == NULL) {
-        perror("Error in opening file");
+        perror("Error in opening input file");
         return 1;
     }
 
+    // Open the output file "results.txt" for writing
+    output = fopen("results.txt", "w");
+    if (output == NULL) {
+        perror("Error in opening output file");
+        fclose(input); // Close the input file before exiting
+        return 1;
+    }
+
+    // Read expressions from the input file and write results to the output file
     while (1) {
         if (fscanf(input, "%d", &a) != 1) {
             printf("Error reading operand a from file\n");
@@ -50,7 +61,8 @@ int main() {
                 continue;
         }
 
-        printf("Answer: %d\n", c);
+        // Write the expression and result to the output file
+        fprintf(output, "%d %c %d = %d\n", a, ch, b, c);
 
         // Check for end of file
         if (feof(input)) {
@@ -58,8 +70,9 @@ int main() {
         }
     }
 
+    // Close both input and output files
     fclose(input);
+    fclose(output);
 
     return 0;
 }
-

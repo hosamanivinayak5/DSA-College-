@@ -1,0 +1,11 @@
+Stack:
+5
+4
+3
+2
+Popped: 5
+Popped: 4
+Top element: 3
+Stack:
+3
+2

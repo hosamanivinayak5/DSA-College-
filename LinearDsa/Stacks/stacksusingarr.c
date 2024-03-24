@@ -31,7 +31,6 @@ void push(Stack *stack, int value) {
     } else {
         stack->top++;
         stack->items[stack->top] = value;
-        printf("Pushed %d to the stack\n", value);
     }
 }
 
@@ -58,33 +57,47 @@ int peek(Stack *stack) {
 }
 
 // Function to display all elements of the stack
-void display(Stack *stack) {
+void display(Stack *stack, FILE *output) {
     if (isEmpty(stack)) {
-        printf("Stack is empty\n");
+        fprintf(output, "Stack is empty\n");
     } else {
-        printf("Stack:\n");
+        fprintf(output, "Stack:\n");
         for (int i = stack->top; i >= 0; i--) {
-            printf("%d\n", stack->items[i]);
+            fprintf(output, "%d\n", stack->items[i]);
         }
     }
 }
 
 int main() {
+    FILE *input, *output;
+    input = fopen("input.txt", "r");
+    if (input == NULL) {
+        printf("Error opening input file\n");
+        exit(1);
+    }
+    output = fopen("output.txt", "w");
+    if (output == NULL) {
+        printf("Error opening output file\n");
+        exit(1);
+    }
+
     Stack stack;
     initializeStack(&stack);
 
-    push(&stack, 1);
-    push(&stack, 2);
-    push(&stack, 3);
-    push(&stack, 4);
-    push(&stack, 5);
+    int value;
+    while (fscanf(input, "%d", &value) == 1) {
+        push(&stack, value);
+    }
 
-    display(&stack);
+    display(&stack, output);
 
-    printf("Popped: %d\n", pop(&stack));
-    printf("Popped: %d\n", pop(&stack));
-    printf("Top element: %d\n", peek(&stack));
-    display(&stack);
+    fprintf(output, "Popped: %d\n", pop(&stack));
+    fprintf(output, "Popped: %d\n", pop(&stack));
+    fprintf(output, "Top element: %d\n", peek(&stack));
+    display(&stack, output);
+
+    fclose(input);
+    fclose(output);
 
     return 0;
 }
